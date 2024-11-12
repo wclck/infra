@@ -3,15 +3,17 @@ flowchart TD
     %% Cloudflare DNS Resolution (Service only)
     Cloudflare["Cloudflare DNS (Service)"]
 
-    %% Proxy Server (Entry Point)
+    %% External User Access Points
     go["Proxy Server go.weclick.tech (User VPN Connections)"]
+    podpiska["Subscription Server podpiska.weclick.tech (Check Subscription)"]
 
     %% Management Server (Configuration & User Management)
     mngmt["Management Server mngmt.weclick.tech (Configuration & User Management)"]
-    mngmt --> |"Writes user data to"| MySQL[(MySQL Database on mngmt)]
+    mngmt --> |"Writes user data to"| MySQL[(MySQL Database)]
     mngmt --> |"Backups"| Telegram["Backup to Telegram"]
+    MySQL --> Telegram  %% Backup connection for the database
 
-    %% Proxy Server distributing connections
+    %% Proxy Server and HAProxy (Entry Point for User Connections)
     go --> HAProxy[HAProxy Load Balancer]
 
     %% Marzban Worker Servers
@@ -20,7 +22,6 @@ flowchart TD
     HAProxy --> srvN[Marzban Worker Server N - srvN.weclick.tech]
 
     %% Subscription Server reading user data from MySQL
-    podpiska["Subscription Server podpiska.weclick.tech (Provides Subscription Links)"]
     podpiska --> |"Reads user data from"| MySQL
 
     %% Worker Servers reading configuration from MySQL and writing traffic stats
@@ -35,4 +36,4 @@ flowchart TD
     Cloudflare -.-> mngmt
     Cloudflare -.-> podpiska
     Cloudflare -.-> go
-    Cloudflare -.-> db
+    Cloudflare -.-> MySQL
