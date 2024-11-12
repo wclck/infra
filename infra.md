@@ -1,4 +1,5 @@
-flowchart TD
+```mermaid
+    flowchart TD
     Cloudflare["Cloudflare DNS (Service)"]
 
     go["Proxy Server go.weclick.tech (User VPN Connections)"]
