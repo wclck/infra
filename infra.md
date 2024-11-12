@@ -29,3 +29,6 @@ flowchart TD
     Cloudflare -.-> podpiska
     Cloudflare -.-> go
     Cloudflare -.-> MySQL
+
+    user["User"] --> go
+    user --> podpiska
