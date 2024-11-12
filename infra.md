@@ -18,11 +18,11 @@ flowchart TD
 
     podpiska --> |"Reads user data from"| MySQL
 
-    srv1 <-- |"Reads configuration from"| MySQL
+    MySQL --> |"Reads configuration from"| srv1
     srv1 --> |"Writes traffic usage stats to"| MySQL
-    srv2 <-- |"Reads configuration from"| MySQL
+    MySQL --> |"Reads configuration from"| srv2
     srv2 --> |"Writes traffic usage stats to"| MySQL
-    srvN <-- |"Reads configuration from"| MySQL
+    MySQL --> |"Reads configuration from"| srvN
     srvN --> |"Writes traffic usage stats to"| MySQL
 
     Cloudflare -.-> mngmt
