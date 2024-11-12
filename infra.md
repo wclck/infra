@@ -2,29 +2,29 @@
 flowchart TD
     %% Cloudflare DNS Resolution
     Cloudflare["Cloudflare DNS"] --> go["Proxy Server go.weclick.tech"]
-    Cloudflare --> mngmt["Management Server mngmt.weclick.tech"]
-    Cloudflare --> podpiska["Subscription Server podpiska.weclick.tech"]
 
-    %% Proxy Server (go.weclick.tech) distributes connections through HAProxy
-    go --> HAProxy[HAProxy Load Balancer]
+    %% Management Server
+    mngmt["Management Server mngmt.weclick.tech (Configuration & User Management)"]
+    mngmt --> |"Writes user data to"| MySQL[(MySQL Database on mngmt)]
+    mngmt --> |"Backups"| Telegram["Backup to Telegram"]
 
-    %% Marzban Servers behind HAProxy
-    HAProxy --> srv1[Marzban Server 1 - srv1.weclick.tech]
-    HAProxy --> srv2[Marzban Server 2 - srv2.weclick.tech]
-    HAProxy --> srvN[Marzban Server N - srvN.weclick.tech]
+    %% Proxy Server distributing connections
+    go --> |"Distributes incoming connections"| HAProxy[HAProxy Load Balancer]
 
-    %% Management Server with MySQL Database and Telegram Backup
-    mngmt --> MySQL[(MySQL Database in Docker on mngmt)]
-    mngmt --> Telegram["Backup to Telegram"]
+    %% Marzban Worker Servers
+    HAProxy --> srv1[Marzban Worker Server 1 - srv1.weclick.tech]
+    HAProxy --> srv2[Marzban Worker Server 2 - srv2.weclick.tech]
+    HAProxy --> srvN[Marzban Worker Server N - srvN.weclick.tech]
 
-    %% Subscription Server connected to MySQL on Management Server
-    podpiska --> MySQL
+    %% Subscription Server reading user data from MySQL
+    podpiska["Subscription Server podpiska.weclick.tech (Provides Subscription Links)"]
+    podpiska --> |"Reads user data from"| MySQL
 
-    %% Marzban Servers connected to the same MySQL Database
-    srv1 --> MySQL
-    srv2 --> MySQL
-    srvN --> MySQL
+    %% Worker Servers reading configuration from MySQL
+    srv1 --> |"Reads configuration from"| MySQL
+    srv2 --> |"Reads configuration from"| MySQL
+    srvN --> |"Reads configuration from"| MySQL
 
-    %% Notes and Connections
-    mngmt -.-> MySQL[db.weclick.tech] 
-    podpiska -.-> MySQL[db.weclick.tech] 
+    %% DNS Resolution Connections
+    Cloudflare -.-> mngmt
+    Cloudflare -.-> podpiska
