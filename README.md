@@ -1,7 +1,9 @@
-### Explanation of the Mermaid Code Structure:
+### Diagram Explanation:
 
-1. **DNS Node** – Cloudflare directs domain names to their respective servers, including the proxy, management, and subscription servers.
-2. **Proxy Server (go.weclick.tech)** routes traffic through **HAProxy** to the Marzban servers.
-3. **Management Server** (mngmt.weclick.tech) is connected to the MySQL database and performs backups to Telegram.
-4. **Subscription Server** (podpiska.weclick.tech) also connects to the same MySQL database.
-5. **Marzban Servers** are connected to HAProxy and share a single MySQL database hosted on the management server.
+1. **Management Server (mngmt)**: Manages user configurations and settings, writes user data to **MySQL**, and backs up information to Telegram.
+2. **MySQL Database**: Central data storage for all user information and configurations, hosted on the **Management Server**.
+3. **Subscription Server (podpiska)**: Reads user data from **MySQL** to provide subscription links.
+4. **Proxy Server (go)**: Simply distributes incoming connections from end-users across the **Marzban Worker Servers** via **HAProxy**.
+5. **Marzban Worker Servers**: Retrieve configurations from **MySQL** and handle user connections routed through the **Proxy Server**.
+
+This layout shows the **Management Server** as the central point of control, with all other servers relying on the database it manages.
