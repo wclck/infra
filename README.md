@@ -1,13 +1,21 @@
-### Diagram Explanation:
+# Содержание раздела:
 
-1. **Cloudflare DNS**: Used solely for DNS resolution, directing traffic to the appropriate servers (no direct user entry point).
-2. **Proxy Server (go.weclick.tech)**: The entry point for user VPN connections. It distributes traffic to the **Marzban Worker Servers** via **HAProxy**.
-3. **Management Server (mngmt.weclick.tech)**: Manages user configurations, writes user data to **MySQL**, and performs backups to Telegram.
-4. **MySQL Database**: Centralized storage for user data and configurations, hosted on the **Management Server**.
-5. **Subscription Server (podpiska.weclick.tech)**: Users check their subscription status here, and it reads user data from **MySQL**.
-6. **Marzban Worker Servers**: These servers handle VPN connections. They:
-   - Read their configurations from **MySQL**.
-   - Write traffic usage statistics back to **MySQL** for reporting.
-7. **HAProxy**: Distributes traffic from **go.weclick.tech** (the entry point) to the **Marzban Worker Servers**.
+## Описание сервиса
+* [Описание инфраструктуры](https://github.com/wclck/infra/blob/main/infra.md)
+* [Использованные серверы](https://github.com/wclck/infra/blob/main/servers.md)
 
-This updated diagram should now accurately represent your infrastructure, with clear distinctions about data flow and user interaction points.
+## Конфигурации
+* [HAProxy](https://github.com/wclck/configs/blob/main/HAProxy.config)
+* [XRay](https://github.com/wclck/configs/tree/main/xray_config)
+* [Docker compose](https://github.com/wclck/configs/tree/main/docker-compose)
+* [Custom subscription page](https://github.com/wclck/subs-page-template)
+
+## Backups
+* [NoSQL (sqlite)](https://github.com/wclck/backup-sqlite)
+* [MySQL](https://github.com/wclck/backup)
+
+## Внешняя вики
+* [В разработке](https://github.com/wclck/docs)
+
+## Технические советы
+* [Очистка докера](https://github.com/wclck/infra/blob/main/docker-cleanup.md)
