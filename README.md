@@ -11,8 +11,7 @@
 * [Custom subscription page](https://github.com/wclck/subs-page-template)
 
 ## Backups
-* [NoSQL (sqlite)](https://github.com/wclck/backup-sqlite)
-* [MySQL](https://github.com/wclck/backup)
+* [Backup](https://github.com/wclck/backup)
 
 ## Внешняя вики
 * [В разработке](https://github.com/wclck/docs)
