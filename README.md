@@ -2,7 +2,6 @@
 
 ## Описание сервиса
 * [Описание инфраструктуры](https://github.com/wclck/infra/blob/main/infra.md)
-* [Использованные серверы](https://github.com/wclck/infra/blob/main/servers.md)
 
 ## Конфигурации
 * [HAProxy](https://github.com/wclck/configs/blob/main/HAProxy.config)
