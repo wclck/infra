@@ -8,6 +8,7 @@
 * [XRay](https://github.com/wclck/infra/tree/main/configs/xray_config)
 * [Docker compose](https://github.com/wclck/infra/tree/main/configs/docker-compose)
 * [Custom subscription page](https://github.com/wclck/infra/tree/main/sub-page)
+* [Custom login page](https://github.com/sm1ky/confluence-marzban-home)
 
 ## Backups
 * [Backup](https://github.com/wclck/infra/tree/main/backup)
