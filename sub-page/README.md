@@ -1,6 +1,6 @@
 # Usage
 
-First you need to copy [html file](https://github.com/wclck/subs-page-template/blob/main/index.html) to your sever. You can do it by this:
+First you need to copy [html file](https://raw.githubusercontent.com/wclck/infra/refs/heads/main/sub-page/index.html) to your sever. You can do it by this:
 
 ```bash
 cd /opt/marzban
@@ -27,9 +27,9 @@ marzban restart
 
 # Edit
 
-You can change default settings from settings variable in index.html, [here](https://github.com/wclck/subs-page-template/blob/main/index.html#L194C19-L194C19) line 194
+You can change default settings from settings variable in index.html, [here](https://github.com/wclck/infra/blob/6ea7a078837c01da9370e25f78f722170847a6e4/sub-page/index.html#L194) line 194
 
-You can also change tutorial from appsJson variable in index.html, [here](https://github.com/wclck/subs-page-template/blob/main/index.html#L112C14-L112C14) line 25
+You can also change tutorial from appsJson variable in index.html, [here](https://github.com/wclck/infra/blob/6ea7a078837c01da9370e25f78f722170847a6e4/sub-page/index.html#L25) line 25
 
 For tutorial video, you need to set direct link of video to tutorial of json
 
