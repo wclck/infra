@@ -15,10 +15,10 @@
 
 ###
 
-[backup-no-sql](https://github.com/wclck/backup/blob/main/backup-no-sql.sh)
+[backup-no-sql](https://github.com/wclck/infra/blob/main/backup/backup-no-sql.sh)
   doesn't copy any mysql data, it copies only marzban files and sqlite database
 
-[backup](https://github.com/wclck/backup/blob/main/backup.sh)
+[backup](https://github.com/wclck/infra/blob/main/backup/backup.sh)
   also copies mysql data from the mysq docker container via mysqldump and puts it in the same archive
 
 ###
@@ -33,12 +33,12 @@
 <p align="left">First, you run this command on your server<br><br></p> 
 
 ```bash
-bash <(curl -Ls https://github.com/wclck/backup/raw/main/backup-no-sql.sh)
+bash <(curl -Ls https://github.com/wclck/infra/raw/main/backup/backup-no-sql.sh)
 ```
 <p align="left">OR<br><br></p>
 
 ```bash
-bash <(curl -Ls https://github.com/wclck/backup/raw/main/backup.sh)
+bash <(curl -Ls https://github.com/wclck/infra/raw/main/backup/backup.sh)
 ``` 
 
 ###
@@ -73,7 +73,7 @@ bash <(curl -Ls https://github.com/wclck/backup/raw/main/backup.sh)
 
 <p align="left">The cron job is set to 12am daily by default, you can change it manually before running the script here:
   https://github.com/wclck/backup/blob/a98101e9a470990795836d8b7894243d835ba847/backup.sh#L8
-https://github.com/wclck/backup/blob/8d9618fa6b27454477e8a44ee01fc1be750196e1/backup-no-sql.sh#L8
+https://github.com/wclck/infra/blob/ad79e7595981aa295dada59a3d3cbca1a6da1c65/backup/backup.sh#L8
 </p>
 
 ###
