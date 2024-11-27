@@ -1,0 +1,27 @@
+frontend https_frontend
+    bind *:443 ssl crt /etc/ssl/haproxy/mngmt.pem crt /etc/ssl/haproxy/podpiska.pem
+    mode http
+#    option httplog
+
+    # Условие для панели Marzban
+    acl is_mngmt hdr(host) -i mngmt.weclick.tech
+    use_backend marzban_backend if is_mngmt
+
+    # Условие для страницы подписок
+    acl is_podpiska hdr(host) -i podpiska.weclick.tech
+    use_backend podpiska_backend if is_podpiska
+
+    # Fallback на 404 (если домен не совпал)
+    default_backend error_backend
+
+backend marzban_backend
+    mode http
+    server marzban_server 127.0.0.1:8443 ssl verify none
+
+backend podpiska_backend
+    mode http
+    server podpiska_server 127.0.0.1:8443 ssl verify none
+
+backend error_backend
+    mode http
+    errorfile 503 /etc/haproxy/errors/503.http
