@@ -1,0 +1,143 @@
+{
+    "log": {
+        "loglevel": "info"
+    },
+    "dns": {
+        "servers": [
+            "1.1.1.1",
+            "9.9.9.9"
+        ],
+        "queryStrategy": "UseIPv4",
+        "tag": "dns"
+    },
+    "inbounds": [
+        {
+            "tag": "VLESS TCP REALITY",
+            "listen": "0.0.0.0",
+            "port": 443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "tcpSettings": {},
+                "security": "reality",
+                "realitySettings": {
+                    "show": false,
+                    "dest": "point_your_server:443",
+                    "xver": 0,
+                    "serverNames": [
+                        "point_your_server"
+                    ],
+                    "privateKey": "point_your_key",
+                    "shortIds": [
+                        "",
+                        "point_your_ids"
+                    ]
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        },
+        {
+            "tag": "Shadowsocks TCP",
+            "listen": "0.0.0.0",
+            "port": 1080,
+            "protocol": "shadowsocks",
+            "settings": {
+                "clients": [],
+                "network": "tcp,udp"
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "DIRECT"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "BLOCK"
+        },
+        {
+            "tag": "warp",
+            "protocol": "socks",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "127.0.0.1",
+                        "port": 40000
+                    }
+                ]
+            }
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "domain": [
+                    "domain:whatsapp.com",
+                    "domain:whatsapp.net",
+                    "domain:web.whatsapp.com",
+                    "domain:mmg.whatsapp.net"
+                ],
+                "type": "field",
+                "outboundTag": "DIRECT"
+            },
+            {
+                "outboundTag": "warp",
+                "domain": [
+                    "domain:netflix.com",
+                    "domain:nflxvideo.net",
+                    "domain:nflxext.com",
+                    "domain:nflximg.net",
+                    "domain:nflxso.net"
+                ],
+                "type": "field",
+                "user": [
+                    "user1",
+                    "user2",
+                    "user3",
+                    "user4"
+                ]
+            },
+            {
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "BLOCK",
+                "type": "field"
+            },
+            {
+                "domain": [
+                    "geosite:private"
+                ],
+                "outboundTag": "BLOCK",
+                "type": "field"
+            },
+            {
+                "protocol": [
+                    "bittorrent"
+                ],
+                "outboundTag": "BLOCK",
+                "type": "field"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "VLESS TCP REALITY",
+                    "Shadowsocks TCP"
+                ],
+                "port": 53,
+                "outboundTag": "dns"
+            }
+        ]
+    }
+}
