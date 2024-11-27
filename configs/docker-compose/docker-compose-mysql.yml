@@ -1,0 +1,30 @@
+services:
+  marzban:
+    image: gozargah/marzban:latest
+    restart: always
+    env_file: .env
+    network_mode: host
+    volumes:
+      - /var/lib/marzban:/var/lib/marzban
+      - /opt/marzban/index.html:/code/app/templates/subscription/index.html
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.3
+    ports:
+      - 3306:3306
+    command:
+      - --mysqlx=OFF
+      - --bind-address=0.0.0.0
+      - --character_set_server=utf8mb4
+      - --collation_server=utf8mb4_unicode_ci
+      - --disable-log-bin
+      - --host-cache-size=0
+      - --innodb-open-files=1024
+      - --innodb-buffer-pool-size=268435456
+    volumes:
+      - mysql:/var/lib/mysql
+volumes:
+  mysql:
+    external: true
+    name: mysql
