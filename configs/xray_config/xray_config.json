@@ -1,0 +1,63 @@
+{
+    "log": {
+        "loglevel": "info"
+    },
+    "routing": {
+        "rules": [
+            {
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "BLOCK",
+                "type": "field"
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "tag": "VLESS TCP REALITY no warp",
+            "listen": "0.0.0.0",
+            "port": 443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "tcpSettings": {},
+                "security": "reality",
+                "realitySettings": {
+                    "show": false,
+                    "dest": "choose_your_dest:443",
+                    "xver": 0,
+                    "serverNames": [
+                        "point_server"
+                    ],
+                    "privateKey": "point_key",
+                    "shortIds": [
+                        "",
+                        "point_id"
+                    ]
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "DIRECT"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "BLOCK"
+        }
+    ]
+}
