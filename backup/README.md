@@ -72,7 +72,7 @@ bash <(curl -Ls https://github.com/wclck/infra/raw/main/backup/backup.sh)
 ###
 
 <p align="left">The cron job is set to 12am daily by default, you can change it manually before running the script here:
-  https://github.com/wclck/backup/blob/a98101e9a470990795836d8b7894243d835ba847/backup.sh#L8
+https://github.com/wclck/infra/blob/5b0058aa6a6d32c1d3861b133a3f432684f527df/backup/backup-no-sql.sh#L8
 https://github.com/wclck/infra/blob/ad79e7595981aa295dada59a3d3cbca1a6da1c65/backup/backup.sh#L8
 </p>
 
