@@ -58,7 +58,7 @@ This updated diagram should now accurately represent your infrastructure, with c
 |--------------------|------------------|-----------------------|------------------|-----------------|
 | mngmt.weclick.tech | 103.102.231.111     | Management Server    | IP Hoster      | 2025-02-06      |
 | go.weclick.tech    | 178.23.190.177     | Proxy Server         | pq.hosting             | 2025-02-12      |
-| podpiska.weclick.tech | 94.131.9.187   | Subscription Server  | pq.hosting           | 2025-02-12      |
+| podpiska.weclick.tech | 94.131.9.187   |  | pq.hosting           | 2025-02-12      |
 | srv0.weclick.tech  | 77.81.138.166      | Outline Server | IP Hoster     | 2024-12-25      |
 | srv1.weclick.tech  | 5.144.182.150      | Marzban Worker Server | IP Hoster     | 2024-12-22    |
 | srv2.weclick.tech  | 5.144.181.118      | Marzban Worker Server | IP Hoster      | 2025-03-23     |
