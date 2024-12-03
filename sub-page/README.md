@@ -5,7 +5,7 @@ First you need to copy [html file](https://raw.githubusercontent.com/wclck/infra
 ```bash
 cd /opt/marzban
 apt install wget
-wget -O index.html [https://raw.githubusercontent.com/wclck/subs-page-template/refs/heads/main/index.html](https://raw.githubusercontent.com/wclck/infra/refs/heads/main/sub-page/index.html
+wget -O index.html https://raw.githubusercontent.com/wclck/infra/refs/heads/main/sub-page/index.html?token=GHSAT0AAAAAAC26KCQN22R47NRB7OHVNJRKZ2PKYTA
 ```
 
 Then you have to map it to your docker container. Add this line to volume section of `docker-compose.yml`:
