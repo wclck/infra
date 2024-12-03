@@ -56,7 +56,7 @@ This updated diagram should now accurately represent your infrastructure, with c
 
 | Server Name        | IP Address       | Role                 | Hosting Provider | Expiration Date |
 |--------------------|------------------|-----------------------|------------------|-----------------|
-| mngmt.weclick.tech | 103.102.231.111     | Management Server    | IP Hoster      | 2025-02-06      |
+| mngmt.weclick.tech | 103.102.231.111     | Management Server/podpiska    | IP Hoster      | 2025-02-06      |
 | go.weclick.tech    | 178.23.190.177     | Proxy Server         | pq.hosting             | 2025-02-12      |
 | srv1.weclick.tech | 94.131.9.187   | Marzban Worker Server | pq.hosting           | 2025-02-12      |
 | srv2.weclick.tech  | 5.144.181.118      | Outline Server | IP Hoster      | 2025-03-23     |
