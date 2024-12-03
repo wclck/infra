@@ -7,11 +7,11 @@ flowchart TD
     Cloudflare["Cloudflare DNS (Service)"]
 
     go["Proxy Server go.weclick.tech (User VPN Connections)"]
-    podpiska["Subscription Server podpiska.weclick.tech (Check Subscription)"]
 
     mngmt["Management Server mngmt.weclick.tech (Configuration & User Management)"]
     mngmt --> |"Writes user data to"| MySQL[(MySQL Database)]
     mngmt --> |"Backups"| Telegram["Backup to Telegram"]
+    mngmt --> |"podpiska"| www["Subscription Server podpiska.weclick.tech (Check Subscription)"]
     MySQL --> Telegram
 
     go --> HAProxy[HAProxy Load Balancer]
@@ -58,7 +58,7 @@ This updated diagram should now accurately represent your infrastructure, with c
 |--------------------|------------------|-----------------------|------------------|-----------------|
 | mngmt.weclick.tech | 103.102.231.111     | Management Server    | IP Hoster      | 2025-02-06      |
 | go.weclick.tech    | 178.23.190.177     | Proxy Server         | pq.hosting             | 2025-02-12      |
-| podpiska.weclick.tech | 94.131.9.187   |  | pq.hosting           | 2025-02-12      |
+| podpiska.weclick.tech | 94.131.9.187   | Marzban Worker Server (former srv1) | pq.hosting           | 2025-02-12      |
 | srv0.weclick.tech  | 77.81.138.166      | Outline Server | IP Hoster     | 2024-12-25      |
 | srv1.weclick.tech  | 5.144.182.150      | Marzban Worker Server | IP Hoster     | 2024-12-22    |
 | srv2.weclick.tech  | 5.144.181.118      | Marzban Worker Server | IP Hoster      | 2025-03-23     |
